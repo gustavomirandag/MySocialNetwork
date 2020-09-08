@@ -1,0 +1,35 @@
+﻿@model IEnumerable<WebApplication1.Models.Post>
+
+@{
+    ViewData["Title"] = "News Feed";
+}
+
+<p>
+    <a asp-action="Create">Create New Post </a>
+</p>
+
+<table class="table">
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <strong>@Html.DisplayFor(modelItem => item.UserEmail)</strong>
+                    <br />
+                    <img src="@item.PhotoUrl" style="max-width:350px;height:auto" />
+                    <br />
+                    @Html.DisplayFor(modelItem => item.Message)
+                    @if (item.UserEmail == User.Identity.Name)
+                    {
+                        <br />
+                        <span>
+                            <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                            <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                            <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                        </span>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
