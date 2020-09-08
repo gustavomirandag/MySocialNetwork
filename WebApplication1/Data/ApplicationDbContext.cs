@@ -11,6 +11,7 @@ namespace WebApplication1.Data
     {
         public ApplicationDbContext()
         {
+
         }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
